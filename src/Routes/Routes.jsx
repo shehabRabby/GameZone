@@ -5,6 +5,7 @@ import LoginPage from "../Pages/LoginPage";
 import RegistrationPage from "../Pages/RegistrationPage";
 import GameDetails from "../Pages/GameDetails";
 import ErrorPage from "../Pages/ErrorPage";
+import MyProfile from "../Pages/MyProfile";
 
  export const router = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ import ErrorPage from "../Pages/ErrorPage";
             {
                 path:"/gameDetails",
                 element:<GameDetails></GameDetails>
+            },
+            {
+                path:"/myprofile",
+                element:<MyProfile></MyProfile>
             },
             {
                 path:"/*",

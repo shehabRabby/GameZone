@@ -1,11 +1,11 @@
 import React from 'react';
 
-const RegistrationPage = () => {
+const MyProfile = () => {
     return (
         <div className="min-h-[332px]">
-            This is regstration
+            My profile
         </div>
     );
 };
 
-export default RegistrationPage;
+export default MyProfile;
