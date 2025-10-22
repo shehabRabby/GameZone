@@ -1,0 +1,102 @@
+[
+  { 
+    "id": "1", 
+    "title": "Player Unknown's Battle Ground: PUBG", 
+    "coverPhoto": "https://play-lh.googleusercontent.com/mHw3J96Ms0J1KcRAwWuttZnE-y-Yzd230fnAnSqz65Ck_84tlEppc0t8X0jyr0gzoya-Hu1Mn2AK1HPvS01wJw=w1052-h592-rw", 
+    "category": "FPS", 
+    "downloadLink": "https://www.pubgmobile.com/en-US/home.shtml", 
+    "description": "PUBG Mobile is a fast-paced battle royale game where players fight for survival, strategy, and victory on dynamic maps.", 
+    "ratings": "4.5", 
+    "developer": "Krafton" 
+  },
+  { 
+    "id": "2", 
+    "title": "Call of Duty: Mobile", 
+    "coverPhoto": "https://play-lh.googleusercontent.com/eD49cPVshWSArWd8La0b3RsMyvGqodDgds-o5NdmtIR-ZvCkODy6Mf1jKbezWtwZexeUSr359RQNWmETjIr6Exk=w1052-h592-rw", 
+    "category": "FPS", 
+    "downloadLink": "https://www.callofduty.com/mobile", 
+    "description": "Call of Duty: Mobile brings console-quality action to your phone with multiplayer, battle royale, and iconic CoD maps.", 
+    "ratings": "4.7", 
+    "developer": "Activision" 
+  },
+  { 
+    "id": "3", 
+    "title": "Genshin Impact", 
+    "coverPhoto": "https://play-lh.googleusercontent.com/SYpVTbN4Nd08YpPFobzs0XfIdRIEVKwPiy7JFBTQM2X08tbJsPDkcusEhcctwB-Fons6CLRVmF_PkNBgt0vk6A=w1052-h592-rw", 
+    "category": "RPG", 
+    "downloadLink": "https://genshin.hoyoverse.com/", 
+    "description": "Genshin Impact is an open-world action RPG filled with elemental magic, breathtaking landscapes, and diverse characters.", 
+    "ratings": "4.8", 
+    "developer": "HoYoverse" 
+  },
+  { 
+    "id": "4", 
+    "title": "Mobile Legends: Bang Bang", 
+    "coverPhoto": "https://play-lh.googleusercontent.com/p-ruhbDbC3WZtknoU6Y1JGmS10Crwvjp7NkVXGw5mqx7cdOJqUK9GKabaapVKHoxoX6GAz3kPcmBru3uUj1E-w=w1052-h592-rw", 
+    "category": "MOBA", 
+    "downloadLink": "https://www.mobilelegends.com/en/", 
+    "description": "Mobile Legends is a 5v5 MOBA game with fast-paced combat, strategic heroes, and intense ranked matches.", 
+    "ratings": "4.3", 
+    "developer": "Moonton" 
+  },
+  { 
+    "id": "5", 
+    "title": "Free Fire: Battlegrounds", 
+    "coverPhoto": "https://play-lh.googleusercontent.com/047AiYkHh6VIuBH_5kRod0uJpnsARCZ9SbYZgSsKNzuE-zzfM7XBZ7dC_igptROuOQ=w832-h470-rw", 
+    "category": "Battle Royale", 
+    "downloadLink": "https://ff.garena.com/en/", 
+    "description": "Free Fire is a survival shooter game with quick matches, unique characters, and tons of in-game events.", 
+    "ratings": "4.4", 
+    "developer": "Garena" 
+  },
+  { 
+    "id": "6", 
+    "title": "Clash Royale", 
+    "coverPhoto": "https://play-lh.googleusercontent.com/UOJ0N42bDu2lUbZIx4n9UCnHtnY5IEyG1jOLXByCbbCvi6wammxVR4XC9endWA5rAA=w1052-h592-rw", 
+    "category": "Strategy", 
+    "downloadLink": "https://clashroyale.com/", 
+    "description": "Clash Royale mixes tower defense and card battling into an epic real-time strategy game.", 
+    "ratings": "4.6", 
+    "developer": "Supercell" 
+  },
+  { 
+    "id": "7", 
+    "title": "Super Sus", 
+    "coverPhoto": "https://play-lh.googleusercontent.com/6M6KPXBp-mGj5g4GZIiiIqRaBFuy12zkUCXy2J_-bXB4gdecjvkdaNwrubFs7rh_Qv4=w832-h470-rw", 
+    "category": "Party", 
+    "downloadLink": "https://innersloth.com/games/among-us/", 
+    "description": "Among Us is a multiplayer social deduction game where crewmates work together while impostors try to sabotage.", 
+    "ratings": "4.2", 
+    "developer": "Innersloth" 
+  },
+  { 
+    "id": "8", 
+    "title": "Minecraft", 
+    "coverPhoto": "https://play-lh.googleusercontent.com/L3TM2l5OG86uKN8EUmamRB0EkXk1xCDe-IWYjl9F7uP6tKHghnZFYHWchDCbZldTliA1=w832-h470-rw", 
+    "category": "Sandbox", 
+    "downloadLink": "https://www.minecraft.net/", 
+    "description": "Minecraft is a sandbox game where players explore, build, and survive in an infinite blocky world.", 
+    "ratings": "4.9", 
+    "developer": "Mojang Studios" 
+  },
+  { 
+    "id": "9", 
+    "title": "Valorant", 
+    "coverPhoto": "https://play-lh.googleusercontent.com/Th5yrhQuVX9WDOc7Uxhx14Nh1qpuFt9fGAnTnw_cKV_SCIiVTR3h5BY2SLw2jImaWWXg=w832-h470-rw", 
+    "category": "FPS", 
+    "downloadLink": "https://playvalorant.com/", 
+    "description": "Valorant is a tactical FPS combining precise gunplay with unique agent abilities for high-stakes team combat.", 
+    "ratings": "4.7", 
+    "developer": "Riot Games" 
+  },
+  { 
+    "id": "10", 
+    "title": "Asphalt 9: Legends", 
+    "coverPhoto": "https://play-lh.googleusercontent.com/tkb0GefSUTJ4pR49MRQhhYWRsZl7_hNFLbwJOIhhfuvZCtWBAi-URg-BlZrUWkB3TVprQeBrxk5Jf6rwtLSI=w1052-h592-rw", 
+    "category": "Racing", 
+    "downloadLink": "https://www.gameloft.com/game/asphalt-9-legends", 
+    "description": "Asphalt 9 is a hyper-realistic racing game featuring stunning graphics, licensed cars, and insane stunts.", 
+    "ratings": "4.5", 
+    "developer": "Gameloft" 
+  }
+]

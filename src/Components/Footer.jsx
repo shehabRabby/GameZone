@@ -56,7 +56,7 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="mt-10 text-center border-t border-gray-800 pt-6 text-sm text-gray-500">
-        © {new Date().getFullYear()} <span className="text-[#58a6ff] font-semibold">GameZone</span>.  
+       Develop By Md.Shehab Al Rabby © {new Date().getFullYear()} <span className="text-[#58a6ff] font-semibold">GameZone</span>.  
         All rights reserved.
       </div>
     </footer>
