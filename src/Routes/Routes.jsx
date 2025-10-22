@@ -14,7 +14,8 @@ import MyProfile from "../Pages/MyProfile";
         children:[
             {
                 index:true,
-                element:<HomePage></HomePage>
+                element:<HomePage></HomePage>,
+                loader: () => fetch("/data.json")
             },
             {
                 path:"/signin",
