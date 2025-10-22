@@ -13,7 +13,7 @@ const Navbar = () => {
     { name: "Login", path: "/signin" },
     { name: "Registration", path: "/signup" },
   ];
-// bg-[#0d1117]
+
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-[#0d1117]  shadow-md">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
