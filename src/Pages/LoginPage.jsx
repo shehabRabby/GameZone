@@ -39,6 +39,10 @@ const handleSignin=(e)=>{
 
    signInWithEmailAndPassword(auth,email,password)
      .then((res)=>{
+        if(!res.user.emailVerified){
+          toast.error("Email is not verified")
+          return;
+        }
         console.log(res);
         setUser(res.user)
         toast.success("Login Succesfully Done");

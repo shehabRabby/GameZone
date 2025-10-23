@@ -4,7 +4,12 @@ import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
 import { auth } from "../Firebase/firebase.config";
 import { toast } from "react-toastify";
-import { createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword,
+         GoogleAuthProvider,
+         sendEmailVerification,
+         signInWithPopup,
+         signOut,
+         updateProfile } from "firebase/auth";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
 const googleProvider = new GoogleAuthProvider();
@@ -51,7 +56,7 @@ const RegistrationPage = () => {
       // update profile 
       updateProfile(res.user,{
         displayName,photoURL,})
-        .then((res)=>{
+        .then(()=>{
           // email verification 
           sendEmailVerification(res.user)
              .then((res)=>{
