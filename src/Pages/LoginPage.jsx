@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import bgImage from "../assets/pubg6.png";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
-import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "../Firebase/firebase.config";
 import { toast } from "react-toastify";
 
@@ -14,10 +14,11 @@ const googleProvider = new GoogleAuthProvider();
 const LoginPage = () => {
   const [show,setShow] = useState(false); //state for hide password 
   const [user, setUser] = useState(null);
+  const emailRef = useRef(null);
 
 
 
-
+// email signout 
 const handleSignout=()=>{
     signOut(auth)
     .then(()=>{
@@ -30,7 +31,7 @@ const handleSignout=()=>{
 
 }
 
-
+// email signin 
 const handleSignin=(e)=>{
     e.preventDefault();
     const email = e.target.email.value;
@@ -51,47 +52,47 @@ const handleSignin=(e)=>{
         console.log(e.code);
       
         if (!e.code) {
-          toast.error("⚠️ An unexpected error occurred. Please try again.");
+          toast.error("An unexpected error occurred. Please try again.");
           return;
         }
       
         if (e.code === "auth/invalid-email") {
-          toast.error("🚫 Invalid email format. Please check and try again.");
+          toast.error("Invalid email format. Please check and try again.");
         } 
         else if (e.code === "auth/user-disabled") {
-          toast.error("🚷 This account has been disabled by an admin.");
+          toast.error("This account has been disabled by an admin.");
         } 
         else if (e.code === "auth/user-not-found") {
-          toast.error("😕 No account found with this email.");
+          toast.error("No account found with this email.");
         } 
         else if (e.code === "auth/wrong-password") {
-          toast.error("❌ Incorrect password. Try again.");
+          toast.error("Incorrect password. Try again.");
         } 
         else if (e.code === "auth/missing-password") {
-          toast.error("🔑 Please enter your password.");
+          toast.error("Please enter your password.");
         } 
         else if (e.code === "auth/too-many-requests") {
-          toast.error("😤 Too many attempts. Try again later.");
+          toast.error("Too many attempts. Try again later.");
         } 
         else if (e.code === "auth/network-request-failed") {
-          toast.error("🌐 Network error. Please check your internet connection.");
+          toast.error("Network error. Please check your internet connection.");
         } 
         else if (e.code === "auth/internal-error") {
-          toast.error("💥 Internal error. Please try again later.");
+          toast.error("Internal error. Please try again later.");
         } 
         else if (e.code === "auth/invalid-credential") {
-          toast.error("🚫 Invalid login credentials. Try again.");
+          toast.error("Invalid Password Try again.");
         } 
         else if (e.code === "auth/popup-closed-by-user") {
-          toast.error("👋 You closed the Google Sign-In popup too early.");
+          toast.error("You closed the Google Sign-In popup too early.");
         } 
         else {
-          toast.error(`⚠️ ${e.message || "Something went wrong. Please try again."}`);
+          toast.error(`${e.message || "Something went wrong. Please try again."}`);
         }
       });
 }
 
-
+// google signin 
 const handleGoogleSignin =()=>{
   signInWithPopup(auth,googleProvider)
   .then((res)=>{
@@ -105,7 +106,18 @@ const handleGoogleSignin =()=>{
   })
 }
 
+//forget password 
+const handleForgetPassword=()=>{
+  const email = emailRef.current.value;
+  sendPasswordResetEmail(auth,email)
+  .then((res)=>{
+    toast.success("Check your email to reset password")
+  })
+  .catch(e=>{
+    toast.error(e.message)
+  })
 
+}
 
 
 
@@ -147,6 +159,7 @@ return (
                 <input
                   type="email"
                   name="email"
+                  ref={emailRef}
                   className="input w-full bg-white/70 text-black placeholder-gray-600 focus:bg-white focus:ring-2 transition-all"
                   placeholder="Enter your email"
                 />
@@ -165,9 +178,9 @@ return (
 
                 {/* forget pass  */}
                 <div className="text-right">
-                  <a className="link link-hover text-sm text-yellow-300 hover:text-yellow-400 transition-colors">
+                  <button type="button" onClick={handleForgetPassword} className="link link-hover text-sm text-yellow-300 hover:text-yellow-400 transition-colors">
                     Forgot password?
-                  </a>
+                  </button>
                 </div>
 
                 <button className="cursor-pointer btn w-full bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 border-none text-white font-bold text-lg shadow-md hover:scale-102 hover:shadow-[0_0_20px_rgba(255,165,0,0.7)] transition-transform duration-200">
