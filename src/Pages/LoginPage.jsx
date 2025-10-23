@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import bgImage from "../assets/pubg6.png";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
@@ -7,29 +7,20 @@ import { IoEyeOff } from "react-icons/io5";
 import { GoogleAuthProvider, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "../Firebase/firebase.config";
 import { toast } from "react-toastify";
-
+import { AuthContext } from "../Context/AuthContext";
 
 const googleProvider = new GoogleAuthProvider();
 
+
+
 const LoginPage = () => {
   const [show,setShow] = useState(false); //state for hide password 
-  const [user, setUser] = useState(null);
   const emailRef = useRef(null);
+  const {signInWithEmailAndPasswordFunc,signInWithEmailPopupFunc,signOutUserFunc,sendPasswordResetEmailFunc,user,setUser} = useContext(AuthContext);
 
 
 
-// email signout 
-const handleSignout=()=>{
-    signOut(auth)
-    .then(()=>{
-      toast.success("LogOut Successfull")
-      setUser(null)
-    })
-    .catch(e=>{
-      toast.error(e.message)
-    })
 
-}
 
 // email signin 
 const handleSignin=(e)=>{
@@ -38,7 +29,7 @@ const handleSignin=(e)=>{
     const password = e.target.password.value;
     console.log(email,password);
 
-   signInWithEmailAndPassword(auth,email,password)
+   signInWithEmailAndPasswordFunc(email,password)
      .then((res)=>{
         if(!res.user.emailVerified){
           toast.error("Email is not verified")
@@ -94,7 +85,7 @@ const handleSignin=(e)=>{
 
 // google signin 
 const handleGoogleSignin =()=>{
-  signInWithPopup(auth,googleProvider)
+  signInWithEmailPopupFunc(googleProvider)
   .then((res)=>{
         // console.log(res);
         setUser(res.user)
@@ -109,8 +100,8 @@ const handleGoogleSignin =()=>{
 //forget password 
 const handleForgetPassword=()=>{
   const email = emailRef.current.value;
-  sendPasswordResetEmail(auth,email)
-  .then((res)=>{
+  sendPasswordResetEmailFunc(email)
+  .then(()=>{
     toast.success("Check your email to reset password")
   })
   .catch(e=>{
@@ -142,16 +133,7 @@ return (
             <div className="card-body text-start">
              
              
-             {
-              user ? (
-                <div className="text-center space-y-3">
-                  <img src={user?.photoURL || "https://via.placeholder.com/88"} alt="" className="h-25 w-25 rounded-full mx-auto"/>
-                  <h2 className="text-xl font-semibold">{user?.displayName}</h2>
-                  <p className="text-xl text-white/80 font-semibold">{user?.email}</p>
-                  <button onClick={handleSignout} className="inline-block mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors ml-2">LogOut</button>
-                </div>
-              ) : 
-              ( 
+             
                 
               <form onSubmit={handleSignin} className="space-y-3">
                 {/* email  */}
@@ -205,8 +187,8 @@ return (
                   now and enter the arena.
                 </p>
               </form>
-              )
-             }
+              
+             
 
 
             </div>

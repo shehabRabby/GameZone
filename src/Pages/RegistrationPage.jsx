@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import bgImage from "../assets/pubg11.png";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
 import { auth } from "../Firebase/firebase.config";
 import { toast } from "react-toastify";
-import { createUserWithEmailAndPassword,
-         GoogleAuthProvider,
-         sendEmailVerification,
-         signInWithPopup,
-         signOut,
-         updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword,GoogleAuthProvider,sendEmailVerification,signInWithPopup,signOut,updateProfile } from "firebase/auth";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
+import { AuthContext } from "../Context/AuthContext";
+
+
 const googleProvider = new GoogleAuthProvider();
+
+
+
+
+
 
 const RegistrationPage = () => {
   const [show,setShow] = useState(false); //state for hide password 
   const [user, setUser] = useState(null);
-
+  const {createUserWithEmailAndPasswordFunc,updateProfileFunc,sendEmailVerificationFunc} = useContext(AuthContext);
 
   const handleSignout=()=>{
       signOut(auth)
@@ -51,16 +54,14 @@ const RegistrationPage = () => {
     // }
 
 
-    createUserWithEmailAndPassword(auth,email,password)
+    createUserWithEmailAndPasswordFunc(email,password)
     .then((res)=>{
       // update profile 
-      updateProfile(res.user,{
-        displayName,photoURL,})
+      updateProfileFunc(displayName,photoURL)
         .then(()=>{
           // email verification 
-          sendEmailVerification(res.user)
-             .then((res)=>{
-                console.log(res);
+          sendEmailVerificationFunc()
+             .then(()=>{
                 toast.success("Regitration Succesfully Check your Email And Valided your acount");
               })
              .catch(e=>{
@@ -159,13 +160,13 @@ const RegistrationPage = () => {
     
             <div className="flex flex-col items-center text-center text-white space-y-8 px-4">
               {/* Title */}
-              <h1 className="text-4xl md:text-5xl font-extrabold animate-pulse">
+              <h1 className=" text-2xl  md:text-4xl lg:text-5xl font-extrabold animate-pulse mt-5">
                 Register now and prepare to conquer the{" "}
                 <span className="text-yellow-300">ARENA...</span>
               </h1>
     
               {/* Login Card */}
-              <div className="card bg-white/10 backdrop-blur-md border border-white/20  w-full max-w-sm transition-all duration-300 lg:mr-150">
+              <div className="card bg-white/10 backdrop-blur-md border border-white/20  w-full max-w-sm transition-all duration-300 lg:mr-150 mb-10">
                 <div className="card-body">
 
                   {
