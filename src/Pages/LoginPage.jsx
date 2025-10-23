@@ -16,7 +16,7 @@ const googleProvider = new GoogleAuthProvider();
 const LoginPage = () => {
   const [show,setShow] = useState(false); //state for hide password 
   const emailRef = useRef(null);
-  const {signInWithEmailAndPasswordFunc,signInWithEmailPopupFunc,signOutUserFunc,sendPasswordResetEmailFunc,user,setUser} = useContext(AuthContext);
+  const {signInWithEmailAndPasswordFunc,signInWithEmailPopupFunc,sendPasswordResetEmailFunc,setUser,loading,setLoading} = useContext(AuthContext);
 
 
 
@@ -31,6 +31,7 @@ const handleSignin=(e)=>{
 
    signInWithEmailAndPasswordFunc(email,password)
      .then((res)=>{
+      setLoading(false)
         if(!res.user.emailVerified){
           toast.error("Email is not verified")
           return;
@@ -88,6 +89,7 @@ const handleGoogleSignin =()=>{
   signInWithEmailPopupFunc(googleProvider)
   .then((res)=>{
         // console.log(res);
+        setLoading(false)
         setUser(res.user)
         toast.success("Login Succesfully Done");
   })
@@ -102,6 +104,7 @@ const handleForgetPassword=()=>{
   const email = emailRef.current.value;
   sendPasswordResetEmailFunc(email)
   .then(()=>{
+    setLoading(false)
     toast.success("Check your email to reset password")
   })
   .catch(e=>{

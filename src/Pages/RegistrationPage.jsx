@@ -20,7 +20,7 @@ const googleProvider = new GoogleAuthProvider();
 const RegistrationPage = () => {
   const [show,setShow] = useState(false); //state for hide password 
   const [user, setUser] = useState(null);
-  const {createUserWithEmailAndPasswordFunc,updateProfileFunc,sendEmailVerificationFunc} = useContext(AuthContext);
+  const {createUserWithEmailAndPasswordFunc,updateProfileFunc,sendEmailVerificationFunc,loading,setLoading} = useContext(AuthContext);
 
   const handleSignout=()=>{
       signOut(auth)
@@ -62,6 +62,7 @@ const RegistrationPage = () => {
           // email verification 
           sendEmailVerificationFunc()
              .then(()=>{
+              setLoading(false)
                 toast.success("Regitration Succesfully Check your Email And Valided your acount");
               })
              .catch(e=>{
