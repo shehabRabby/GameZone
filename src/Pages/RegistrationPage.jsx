@@ -4,12 +4,27 @@ import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
 import { auth } from "../Firebase/firebase.config";
 import { toast } from "react-toastify";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
+const googleProvider = new GoogleAuthProvider();
 
 const RegistrationPage = () => {
   const [show,setShow] = useState(false); //state for hide password 
+  const [user, setUser] = useState(null);
+
+
+  const handleSignout=()=>{
+      signOut(auth)
+      .then(()=>{
+        toast.success("LogOut Successfull")
+        setUser(null)
+      })
+      .catch(e=>{
+        toast.error(e.message)
+      })
+  
+  }
 
 
   const handleSignup = (e) => {
@@ -92,13 +107,24 @@ const RegistrationPage = () => {
 
   }
 
+  const handleGoogleSignin =()=>{
+    signInWithPopup(auth,googleProvider)
+    .then((res)=>{
+          // console.log(res);
+          setUser(res.user)
+          toast.success("Login Succesfully Done Use Google");
+    })
+    .catch(e=>{
+          console.log(e);
+          toast.error(e.message);
+    })
+  }
 
 
 
 
 
-
-    return (
+  return (
         <div className="min-h-[332px]">
           <div
             className="relative min-h-screen bg-cover bg-center flex items-center justify-center"
@@ -118,8 +144,16 @@ const RegistrationPage = () => {
               <div className="card bg-white/10 backdrop-blur-md border border-white/20  w-full max-w-sm transition-all duration-300 lg:mr-150">
                 <div className="card-body">
 
-                 {/* form  */}
-                  <form onSubmit={handleSignup} className="space-y-1 text-start">
+                  {
+                    user ? (
+                      <div className="text-center space-y-3">
+                        <img src={user?.photoURL || "https://via.placeholder.com/88"} alt="" className="h-25 w-25 rounded-full mx-auto"/>
+                        <h2 className="text-xl font-semibold">{user?.displayName}</h2>
+                        <p className="text-xl text-white/80 font-semibold">{user?.email}</p>
+                        <button onClick={handleSignout} className="inline-block mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors ml-2">LogOut</button>
+                       </div>
+                    ):(
+                      <form onSubmit={handleSignup} className="space-y-1 text-start">
                     {/* name  */}
                     <label className="text-white font-semibold text-sm">Name</label>
                     <input
@@ -158,9 +192,7 @@ const RegistrationPage = () => {
                     </div>
 
                   
-
-
-
+                    {/* forget pass  */}
                     <div className="text-right py-1">
                       <a className="link link-hover text-sm text-yellow-300 hover:text-yellow-400 transition-colors">
                         Forgot password?
@@ -173,7 +205,7 @@ const RegistrationPage = () => {
                     </button>
 
                     {/* Google */}
-                    <button className="btn bg-white/70 w-full text-black border-[#e5e5e5]">
+                    <button type="button" onClick={handleGoogleSignin} className="btn bg-white/70 w-full text-black border-[#e5e5e5] cursor-pointer">
                       <FcGoogle size={25}></FcGoogle> Login with Google
                     </button>
 
@@ -184,6 +216,11 @@ const RegistrationPage = () => {
                     </p>
                   </form>
 
+                    )
+                  }
+
+                 
+                  
 
                 </div>
               </div>
