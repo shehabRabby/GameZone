@@ -90,13 +90,6 @@ const RegistrationPage = () => {
     })
     
 
-
-
-
-
-
-
-
   }
 
 

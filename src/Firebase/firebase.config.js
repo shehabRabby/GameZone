@@ -6,13 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBxeZbLbRMB1zZtnRoTPMRDpMoaq9VLr_4",
-  authDomain: "game-zone-571ad.firebaseapp.com",
-  projectId: "game-zone-571ad",
-  storageBucket: "game-zone-571ad.firebasestorage.app",
-  // storageBucket: "game-zone-571ad.appspot.com",
-  messagingSenderId: "38216884235",
-  appId: "1:38216884235:web:90d8d3f4152e67cf25a70e"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase

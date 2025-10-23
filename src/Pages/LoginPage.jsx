@@ -43,10 +43,48 @@ const handleSignin=(e)=>{
         setUser(res.user)
         toast.success("Login Succesfully Done");
       })
-      .catch(e=>{
-        console.log(e);
-        toast.error(e.message);
-      })
+      .catch((e) => {
+        console.log(e.code);
+      
+        if (!e.code) {
+          toast.error("⚠️ An unexpected error occurred. Please try again.");
+          return;
+        }
+      
+        if (e.code === "auth/invalid-email") {
+          toast.error("🚫 Invalid email format. Please check and try again.");
+        } 
+        else if (e.code === "auth/user-disabled") {
+          toast.error("🚷 This account has been disabled by an admin.");
+        } 
+        else if (e.code === "auth/user-not-found") {
+          toast.error("😕 No account found with this email.");
+        } 
+        else if (e.code === "auth/wrong-password") {
+          toast.error("❌ Incorrect password. Try again.");
+        } 
+        else if (e.code === "auth/missing-password") {
+          toast.error("🔑 Please enter your password.");
+        } 
+        else if (e.code === "auth/too-many-requests") {
+          toast.error("😤 Too many attempts. Try again later.");
+        } 
+        else if (e.code === "auth/network-request-failed") {
+          toast.error("🌐 Network error. Please check your internet connection.");
+        } 
+        else if (e.code === "auth/internal-error") {
+          toast.error("💥 Internal error. Please try again later.");
+        } 
+        else if (e.code === "auth/invalid-credential") {
+          toast.error("🚫 Invalid login credentials. Try again.");
+        } 
+        else if (e.code === "auth/popup-closed-by-user") {
+          toast.error("👋 You closed the Google Sign-In popup too early.");
+        } 
+        else {
+          toast.error(`⚠️ ${e.message || "Something went wrong. Please try again."}`);
+        }
+      });
 }
 
 
