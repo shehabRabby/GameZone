@@ -7,7 +7,7 @@ import { RingLoader } from 'react-spinners';
 const GameDetails = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { game } = location.state || {}; // get game from state
+  const { game } = location.state || {}; 
 
   if (!game) {
     return (

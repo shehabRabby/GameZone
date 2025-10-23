@@ -25,7 +25,7 @@ const AppsCard = ({game}) => {
 
            {/* See Details Button */}
            <Link
-             to={`/gameDetails`} state={{ game }} // pass the whole game object
+             to={`/gameDetails`} state={{ game }}
              className='inline-block mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors ml-2'
            >
              See Details

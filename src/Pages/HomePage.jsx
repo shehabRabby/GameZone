@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import ShowSlider from "../Components/ShowSlider";
 import NewsLetter from "../Components/NewsLetter";
 import GameContainer from "../Components/GameContainer";
