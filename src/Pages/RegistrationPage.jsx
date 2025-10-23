@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
 import { auth } from "../Firebase/firebase.config";
 import { toast } from "react-toastify";
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
 const googleProvider = new GoogleAuthProvider();
@@ -45,8 +45,27 @@ const RegistrationPage = () => {
     //   return;
     // }
 
+
     createUserWithEmailAndPassword(auth,email,password)
     .then((res)=>{
+      // update profile 
+      updateProfile(res.user,{
+        displayName,photoURL,})
+        .then((res)=>{
+          // email verification 
+          sendEmailVerification(res.user)
+             .then((res)=>{
+                console.log(res);
+                toast.success("Regitration Succesfully Check your Email And Valided your acount");
+              })
+             .catch(e=>{
+                toast.error(e.message)
+              })
+        })
+        .catch((e)=>{
+          toast.error(e.message)
+        })
+
       console.log(res);
       toast.success("Regitration Succesfully Done");
     })
@@ -103,7 +122,7 @@ const RegistrationPage = () => {
            toast.error(`⚠️ ${e.message || "Something went wrong. Please try again."}`);
          }
     })
-    
+
 
   }
 
@@ -218,10 +237,6 @@ const RegistrationPage = () => {
 
                     )
                   }
-
-                 
-                  
-
                 </div>
               </div>
             </div>
