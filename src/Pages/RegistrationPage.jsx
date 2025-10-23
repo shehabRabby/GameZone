@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import bgImage from "../assets/pubg11.png";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { auth } from "../Firebase/firebase.config";
 import { toast } from "react-toastify";
 import { createUserWithEmailAndPassword,GoogleAuthProvider,sendEmailVerification,signInWithPopup,signOut,updateProfile } from "firebase/auth";
@@ -18,6 +18,7 @@ const googleProvider = new GoogleAuthProvider();
 
 
 const RegistrationPage = () => {
+  const navigate = useNavigate();
   const [show,setShow] = useState(false); //state for hide password 
   const [user, setUser] = useState(null);
   const {createUserWithEmailAndPasswordFunc,updateProfileFunc,sendEmailVerificationFunc,loading,setLoading} = useContext(AuthContext);
@@ -64,6 +65,9 @@ const RegistrationPage = () => {
              .then(()=>{
               setLoading(false)
                 toast.success("Regitration Succesfully Check your Email And Valided your acount");
+                signOut(auth);
+                setUser(null);
+                navigate('/signin')
               })
              .catch(e=>{
                 toast.error(e.message)
