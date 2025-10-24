@@ -67,7 +67,7 @@ const handleSignup = (e) => {
         });
     })
     .catch((e) => {
-      console.log(e.code);
+      // console.log(e.code);
       if (!e.code) {
         toast.error("An unexpected error occurred.");
         return;

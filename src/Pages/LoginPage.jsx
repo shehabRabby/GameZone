@@ -29,18 +29,18 @@ const handleSignin = (e) => {
   e.preventDefault();
   const email = e.target.email.value;
   const password = e.target.password.value;
-  console.log(email, password);
+  // console.log(email, password);
 
   signInWithEmailAndPasswordFunc(email, password)
     .then((res) => {
       setLoading(false);
-      console.log(res);
+      // console.log(res);
       setUser(res.user);
       toast.success("Login Successfully Done");
       navigate(from, { replace: true });
     })
     .catch((e) => {
-      console.log(e.code);
+      // console.log(e.code);
 
       if (!e.code) {
         toast.error("An unexpected error occurred. Please try again.");
@@ -84,7 +84,7 @@ const handleGoogleSignin =()=>{
         toast.success("Login Succesfully Done");
   })
   .catch(e=>{
-        console.log(e);
+        // console.log(e);
         toast.error(e.message);
   })
 }
