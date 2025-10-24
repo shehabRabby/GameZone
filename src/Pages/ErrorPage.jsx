@@ -8,7 +8,7 @@ const ErrorPage = () => {
       <div className="bg-white/10 backdrop-blur-md p-10 rounded-3xl shadow-2xl max-w-md w-full animate-fadeIn">
         <FaExclamationTriangle className="text-yellow-300 text-6xl mb-4 mx-auto animate-bounce" />
         <h1 className="text-6xl font-extrabold mb-2">404</h1>
-        <h2 className="text-2xl font-semibold mb-4">Oops! Page Not Found 😢</h2>
+        <h2 className="text-2xl font-semibold mb-4">Oops! Page Not Found</h2>
         <p className="text-gray-200 mb-8">
           The page you’re looking for doesn’t exist or has been moved.
         </p>

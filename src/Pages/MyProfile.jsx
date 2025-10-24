@@ -38,7 +38,7 @@ const MyProfile = () => {
         </h2>
         <p className="text-gray-400 mb-6">{user?.email}</p>
 
-         {/* update Info */}
+         {/* update Info here */}
         <button
           onClick={() => navigate("/update-info")}
           className="mt-4 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition duration-300 mr-3 mb-2 md:mb-0"
@@ -46,10 +46,7 @@ const MyProfile = () => {
           Update Information
         </button>
 
-        <button
-          onClick={handleLogout}
-          className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition duration-300"
-        >
+        <button onClick={handleLogout} className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition duration-300">
           Log Out
         </button>
       </div>

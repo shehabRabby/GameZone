@@ -43,16 +43,13 @@ const handleSignup = (e) => {
 
   createUserWithEmailAndPasswordFunc(email, password)
     .then((res) => {
-      // update profile
       updateProfileFunc(displayName, photoURL)
         .then(() => {
           setLoading(false);
-          toast.success("Registration Successful 🎉 Please log in to continue.");
-          
-          // 🚨 Force sign out so user isn't logged in right after registration
+          toast.success("Registration Successful Please log in to continue.");
           signOut(auth)
             .then(() => {
-              navigate("/signin"); // redirect to login page
+              navigate("/signin"); 
             })
             .catch((err) => {
               console.error(err);
@@ -119,15 +116,11 @@ const handleSignup = (e) => {
 
   return (
     <div className="min-h-[332px]">
-      <div
-        className="relative min-h-screen bg-cover bg-center flex items-center justify-center"
-        style={{ backgroundImage: `url(${bgImage})` }}
-      >
-        {/* Overlay */}
+      <div className="relative min-h-screen bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: `url(${bgImage})` }} >
+
         <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
 
         <div className="flex flex-col items-center text-center text-white space-y-8 px-4">
-          {/* Title */}
           <h1 className=" text-2xl  md:text-4xl lg:text-5xl font-extrabold animate-pulse mt-5">
             Register now and prepare to conquer the{" "}
             <span className="text-yellow-300">ARENA...</span>

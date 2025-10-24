@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+/* slider style here */
 .swiper-pagination-bullet {
   background: white !important;
   opacity: 0.8;
@@ -15,11 +16,17 @@
   color: #58a6ff !important;
 }
 
-/* 🌌 Background Animation */
+/* Background animation style */
 @keyframes bgMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .animate-bgMove {
@@ -27,27 +34,41 @@
   background-size: 200% 200%;
 }
 
-/* Fade-in card animation */
+/* Fade-in card animation style here */
 @keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .fade-in-up {
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* Hover glow effect */
+/* Hover effect */
 .glow-hover:hover {
   box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
   transition: box-shadow 0.3s ease-in-out;
 }
 
-/* Floating glow orb */
 @keyframes floatGlow {
-  0% { opacity: 0.6; transform: translateY(0px); }
-  50% { opacity: 1; transform: translateY(-10px); }
-  100% { opacity: 0.6; transform: translateY(0px); }
+  0% {
+    opacity: 0.6;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 0.6;
+    transform: translateY(0px);
+  }
 }
 
 .bg-floating-glow {
@@ -56,19 +77,22 @@
   left: 20%;
   width: 200px;
   height: 200px;
-  background: radial-gradient(circle, rgba(99,102,241,0.3), transparent 70%);
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.3), transparent 70%);
   border-radius: 50%;
   filter: blur(50px);
   animation: floatGlow 6s ease-in-out infinite;
 }
 
-
-
-
-/* abou us */
+/* about us section*/
 @keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(-20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fadeIn {

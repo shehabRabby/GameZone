@@ -11,7 +11,6 @@ const UpdateInfo = () => {
   const navigate = useNavigate();
   const auth = getAuth();
 
-  // ✅ Make sure the user is authenticated
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (!currentUser) {
@@ -39,21 +38,12 @@ const UpdateInfo = () => {
         photoURL: photo,
       });
 
-      // Update AuthContext user
-      const updatedUser = {
-        ...currentUser,
-        displayName: name,
-        photoURL: photo,
-      };
+      const updatedUser = {...currentUser,displayName: name, photoURL: photo};
 
       setUser(updatedUser);
-
-      // ✅ Toast success message
       toast.success("Information updated successfully");
-
-      // ✅ Redirect to profile (or home)
       setTimeout(() => {
-        navigate("/myprofile"); // or "/" for home
+        navigate("/myprofile");
       }, 1000);
     } catch (error) {
       toast.error(error.message || "Something went wrong");

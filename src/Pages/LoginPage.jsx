@@ -107,11 +107,7 @@ const handleForgetPassword=()=>{
 
 return (
     <div className="min-h-[332px]">
-      <div
-        className="relative min-h-screen bg-cover bg-center flex items-center justify-center"
-        style={{ backgroundImage: `url(${bgImage})` }}
-      >
-        {/* Overlay */}
+      <div className="relative min-h-screen bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: `url(${bgImage})` }}>
         <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
 
         <div className="flex flex-col items-center text-center text-white space-y-8 px-4">
@@ -124,28 +120,19 @@ return (
           {/* Login Card */}
           <div className="card bg-white/10 backdrop-blur-md border border-white/20  w-full max-w-sm transition-all duration-300 lg:mr-150">
             <div className="card-body text-start">
-             
-             
-             
-                
+
+              {/* from start*/}
               <form onSubmit={handleSignin} className="space-y-3">
                 {/* email  */}
                 <label className="text-white font-semibold text-sm">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  ref={emailRef}
-                  className="input w-full bg-white/70 text-black placeholder-gray-600 focus:bg-white focus:ring-2 transition-all"
-                  placeholder="Enter your email"
+                <input type="email" name="email" ref={emailRef}
+                  className="input w-full bg-white/70 text-black placeholder-gray-600 focus:bg-white focus:ring-2 transition-all"placeholder="Enter your email"
                 />
 
                 {/* password  */}
                  <div className="relative">
                     <label className="text-white font-semibold text-sm">Password</label>
-                    <input
-                      type={show ? "text":"password"}
-                      name="password"
-                      className="h-10 p-3 rounded-sm w-full bg-white/70 text-black placeholder-gray-600 focus:bg-white focus:ring-2  transition-all"
+                    <input type={show ? "text":"password"} name="password" className="h-10 p-3 rounded-sm w-full bg-white/70 text-black placeholder-gray-600 focus:bg-white focus:ring-2  transition-all"
                       placeholder="Enter your password"
                     />
                      <span onClick={()=>{setShow(!show)}} className="absolute right-[8px] top-[35px] cursor-pointer">{show ? <FaEye color="black"></FaEye> : <IoEyeOff color="black"></IoEyeOff>}</span>
@@ -162,28 +149,16 @@ return (
                   Login
                 </button>
 
-                  {/* Google */}
+                {/* Google */}
                 <button type="button" onClick={handleGoogleSignin} className="btn bg-white/70 w-full text-black border-[#e5e5e5] cursor-pointer">
                   <FcGoogle size={25}></FcGoogle> Login with Google
                 </button>
 
-
-
                 <p>
                   Don’t have an account?{" "}
-                  <Link
-                    to="/signup"
-                    className="underline hover:text-orange-400 font-semibold"
-                  >
-                    Register
-                  </Link>{" "}
-                  now and enter the arena.
+                  <Link  to="/signup"  className="underline hover:text-orange-400 font-semibold">Register</Link>{" "}now and enter the arena.
                 </p>
               </form>
-              
-             
-
-
             </div>
           </div>
         </div>
