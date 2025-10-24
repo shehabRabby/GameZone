@@ -6,37 +6,46 @@ import RegistrationPage from "../Pages/RegistrationPage";
 import GameDetails from "../Pages/GameDetails";
 import ErrorPage from "../Pages/ErrorPage";
 import MyProfile from "../Pages/MyProfile";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
- export const router = createBrowserRouter([
-    {
-        path:'/',
-        element:<MainLayout></MainLayout>,
-        children:[
-            {
-                index:true,
-                element:<HomePage></HomePage>,
-                loader: () => fetch("/data.json")
-            },
-            {
-                path:"/signin",
-                element:<LoginPage></LoginPage>
-            },
-            {
-                path:"/signup",
-                element:<RegistrationPage></RegistrationPage>
-            },
-            {
-                path:"/gameDetails",
-                element:<GameDetails></GameDetails>
-            },
-            {
-                path:"/myprofile",
-                element:<MyProfile></MyProfile>
-            },
-            {
-                path:"/*",
-                element:<ErrorPage></ErrorPage>
-            },
-        ]
-    }
-])
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        index: true,
+        element: <HomePage></HomePage>,
+        loader: () => fetch("/data.json"),
+      },
+      {
+        path: "/signin",
+        element: <LoginPage></LoginPage>,
+      },
+      {
+        path: "/signup",
+        element: <RegistrationPage></RegistrationPage>,
+      },
+      {
+        path: "/gameDetails",
+        element: (
+          <PrivateRoute>
+            <GameDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myprofile",
+        element: (
+          <PrivateRoute>
+            <MyProfile></MyProfile>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/*",
+        element: <ErrorPage></ErrorPage>,
+      },
+    ],
+  },
+]);

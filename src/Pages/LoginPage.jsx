@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import bgImage from "../assets/pubg6.png";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
 import { GoogleAuthProvider, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
@@ -16,73 +16,62 @@ const googleProvider = new GoogleAuthProvider();
 const LoginPage = () => {
   const [show,setShow] = useState(false); //state for hide password 
   const emailRef = useRef(null);
-  const {signInWithEmailAndPasswordFunc,signInWithEmailPopupFunc,sendPasswordResetEmailFunc,setUser,loading,setLoading} = useContext(AuthContext);
-
+  const {signInWithEmailAndPasswordFunc,signInWithEmailPopupFunc,sendPasswordResetEmailFunc,setUser,setLoading} = useContext(AuthContext);
+  const location = useLocation();
+  const from = location.state || "/";
+  const navigate = useNavigate();
 
 
 
 
 // email signin 
-const handleSignin=(e)=>{
-    e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    console.log(email,password);
+const handleSignin = (e) => {
+  e.preventDefault();
+  const email = e.target.email.value;
+  const password = e.target.password.value;
+  console.log(email, password);
 
-   signInWithEmailAndPasswordFunc(email,password)
-     .then((res)=>{
-      setLoading(false)
-        if(!res.user.emailVerified){
-          toast.error("Email is not verified")
-          return;
-        }
-        console.log(res);
-        setUser(res.user)
-        toast.success("Login Succesfully Done");
-      })
-      .catch((e) => {
-        console.log(e.code);
-      
-        if (!e.code) {
-          toast.error("An unexpected error occurred. Please try again.");
-          return;
-        }
-      
-        if (e.code === "auth/invalid-email") {
-          toast.error("Invalid email format. Please check and try again.");
-        } 
-        else if (e.code === "auth/user-disabled") {
-          toast.error("This account has been disabled by an admin.");
-        } 
-        else if (e.code === "auth/user-not-found") {
-          toast.error("No account found with this email.");
-        } 
-        else if (e.code === "auth/wrong-password") {
-          toast.error("Incorrect password. Try again.");
-        } 
-        else if (e.code === "auth/missing-password") {
-          toast.error("Please enter your password.");
-        } 
-        else if (e.code === "auth/too-many-requests") {
-          toast.error("Too many attempts. Try again later.");
-        } 
-        else if (e.code === "auth/network-request-failed") {
-          toast.error("Network error. Please check your internet connection.");
-        } 
-        else if (e.code === "auth/internal-error") {
-          toast.error("Internal error. Please try again later.");
-        } 
-        else if (e.code === "auth/invalid-credential") {
-          toast.error("Invalid Password Try again.");
-        } 
-        else if (e.code === "auth/popup-closed-by-user") {
-          toast.error("You closed the Google Sign-In popup too early.");
-        } 
-        else {
-          toast.error(`${e.message || "Something went wrong. Please try again."}`);
-        }
-      });
-}
+  signInWithEmailAndPasswordFunc(email, password)
+    .then((res) => {
+      setLoading(false);
+      console.log(res);
+      setUser(res.user);
+      toast.success("Login Successfully Done");
+      navigate(from, { replace: true });
+    })
+    .catch((e) => {
+      console.log(e.code);
+
+      if (!e.code) {
+        toast.error("An unexpected error occurred. Please try again.");
+        return;
+      }
+
+      if (e.code === "auth/invalid-email") {
+        toast.error("Invalid email format. Please check and try again.");
+      } else if (e.code === "auth/user-disabled") {
+        toast.error("This account has been disabled by an admin.");
+      } else if (e.code === "auth/user-not-found") {
+        toast.error("No account found with this email.");
+      } else if (e.code === "auth/wrong-password") {
+        toast.error("Incorrect password. Try again.");
+      } else if (e.code === "auth/missing-password") {
+        toast.error("Please enter your password.");
+      } else if (e.code === "auth/too-many-requests") {
+        toast.error("Too many attempts. Try again later.");
+      } else if (e.code === "auth/network-request-failed") {
+        toast.error("Network error. Please check your internet connection.");
+      } else if (e.code === "auth/internal-error") {
+        toast.error("Internal error. Please try again later.");
+      } else if (e.code === "auth/invalid-credential") {
+        toast.error("Invalid credential. Try again.");
+      } else if (e.code === "auth/popup-closed-by-user") {
+        toast.error("You closed the Google Sign-In popup too early.");
+      } else {
+        toast.error(`${e.message || "Something went wrong. Please try again."}`);
+      }
+    });
+};
 
 // google signin 
 const handleGoogleSignin =()=>{
@@ -91,6 +80,7 @@ const handleGoogleSignin =()=>{
         // console.log(res);
         setLoading(false)
         setUser(res.user)
+        navigate(from, { replace: true });
         toast.success("Login Succesfully Done");
   })
   .catch(e=>{
