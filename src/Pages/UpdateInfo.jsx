@@ -52,6 +52,7 @@ const UpdateInfo = () => {
 
   return (
     <div className="min-h-screen bg-[#0d1117] flex flex-col justify-center items-center p-6 text-white">
+      <title>GameZone-Update Info</title>
       <div className="bg-[#161b22] rounded-2xl shadow-xl p-8 w-full max-w-md animate-fade-in">
         <h1 className="text-3xl font-bold mb-6 text-center text-[#58a6ff]">
           Update Your Info

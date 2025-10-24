@@ -6,6 +6,7 @@ import ReactMotion from "../Components/ReactMotion";
 const AboutUs = () => {
   return (
     <div className="min-h-[332px]">
+      <title>GameZone-About Us</title>
       <section>
         <div className="relative w-full h-[300px] bg-cover bg-center" style={{ backgroundImage: "url('/path-to-your-gaming-banner.jpg')" }}>
           <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center px-4">

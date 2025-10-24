@@ -5,6 +5,7 @@ import { Link } from "react-router";
 const ErrorPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-indigo-700 via-purple-700 to-fuchsia-600 text-white text-center p-6">
+     <title>GameZone-Error</title>
       <div className="bg-white/10 backdrop-blur-md p-10 rounded-3xl shadow-2xl max-w-md w-full animate-fadeIn">
         <FaExclamationTriangle className="text-yellow-300 text-6xl mb-4 mx-auto animate-bounce" />
         <h1 className="text-6xl font-extrabold mb-2">404</h1>

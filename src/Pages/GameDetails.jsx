@@ -22,6 +22,7 @@ const GameDetails = () => {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center px-4 py-10 overflow-hidden">
+      <title>{game.title}</title>
       <div className="absolute inset-0 bg-gradient-to-br from-[#27872a]/5 via-[#27872a]/5 to-[#27872a]/5">
       </div>
 

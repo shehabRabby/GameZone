@@ -21,6 +21,7 @@ const MyProfile = () => {
 
   return (
     <div className="min-h-screen bg-[#0d1117] text-white flex flex-col justify-center items-center p-6">
+      <title>GameZone-Profile</title>
       <div className="w-full flex justify-center m-6">
         <h1 className="text-white text-center text-3xl md:text-4xl font-bold animate-bounce">
           Welcome to your profile

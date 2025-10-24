@@ -25,6 +25,17 @@
             5.Animations: React Spring, Tailwind basic animations
             6.Authentication: Firebase Authentication (Email, Google, etc.)
 
+         # npm package
+            React Router: npm install react-router-dom
+            Daisy UI (Tailwind plugin): npm install daisyui
+            Tailwind CSS: npm install -D tailwindcss postcss autoprefixer : npx tailwindcss init -p
+            Firebase: npm install firebase
+            Sweet Alert (for popups): npm install sweetalert2
+            React Icons: npm install react-icons
+            React Spinner (loading animations): npm install react-spinners
+            React Motion (animations): npm install react-motion
+            React Awesome (animations or effects): npm install react-awesome-reveal
+
         💡 Help & Support:
             1.Slider: Implemented using a React slider library
             2.Newsletter: Styled using TailwindCSS

@@ -39,7 +39,13 @@ const handleSignup = (e) => {
   const photoURL = e.target.photo.value;
   const email = e.target.email.value;
   const password = e.target.password.value;
-  console.log("Signup function enter :", displayName, photoURL, email, password);
+  // console.log("Signup function enter :", displayName, photoURL, email, password);
+  //password validation use regex
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+    if(!passwordRegex.test(password)){
+      toast.error("Password must be at least 6 characters long and include uppercase, lowercase, number, and special character.");
+      return;
+    }
 
   createUserWithEmailAndPasswordFunc(email, password)
     .then((res) => {
@@ -116,6 +122,7 @@ const handleSignup = (e) => {
 
   return (
     <div className="min-h-[332px]">
+      <title>GameZone-Registration</title>
       <div className="relative min-h-screen bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: `url(${bgImage})` }} >
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
@@ -157,7 +164,7 @@ const handleSignup = (e) => {
                     type="text"
                     name="name"
                     className="input w-full bg-white/70 text-black placeholder-gray-600 focus:bg-white focus:ring-2 focus:ring-yellow-400 transition-all"
-                    placeholder="Enter your name"
+                    placeholder="Enter your name" required
                   />
                   {/* photo */}
                   <label className="text-white font-semibold text-sm">
@@ -177,7 +184,7 @@ const handleSignup = (e) => {
                     type="email"
                     name="email"
                     className="input w-full bg-white/70 text-black placeholder-gray-600 focus:bg-white focus:ring-2 focus:ring-yellow-400 transition-all"
-                    placeholder="Enter your email"
+                    placeholder="Enter your email" required
                   />
 
                   {/* password */}
@@ -189,8 +196,8 @@ const handleSignup = (e) => {
                       type={show ? "text" : "password"}
                       name="password"
                       className="h-10 p-3 rounded-sm w-full bg-white/70 text-black placeholder-gray-600 focus:bg-white focus:ring-2 focus:ring-yellow-400 transition-all"
-                      placeholder="Enter your password"
-                    />
+                      placeholder="Enter your password" required
+                    /> 
                     <span
                       onClick={() => {
                         setShow(!show);

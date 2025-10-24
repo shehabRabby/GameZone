@@ -107,6 +107,7 @@ const handleForgetPassword=()=>{
 
 return (
     <div className="min-h-[332px]">
+      <title>GameZone-Login</title>
       <div className="relative min-h-screen bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: `url(${bgImage})` }}>
         <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
 
