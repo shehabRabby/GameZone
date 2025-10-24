@@ -2,6 +2,7 @@ import React from "react";
 import mission from "../assets/pubg10.png";
 import mission1 from "../assets/pubg1.png";
 import mission2 from "../assets/pubg11.png";
+import ReactMotion from "../Components/ReactMotion";
 
 const AboutUs = () => {
   return (
@@ -25,6 +26,7 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
+      <ReactMotion></ReactMotion>
 
       <section>
         <section className="py-20">

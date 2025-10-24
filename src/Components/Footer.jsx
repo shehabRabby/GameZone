@@ -35,8 +35,8 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold text-white mb-3">Support</h3>
           <ul className="flex flex-col gap-2 text-sm">
-            <Link to="/" className="hover:text-[#58a6ff]">About Us</Link>
-            <Link to="/" className="hover:text-[#58a6ff]">Contact</Link>
+            <Link to="/aboutus" className="hover:text-[#58a6ff]">About Us</Link>
+            <Link to="/aboutus" className="hover:text-[#58a6ff]">Contact</Link>
             <Link to="/" className="hover:text-[#58a6ff]">FAQ</Link>
             <Link to="/" className="hover:text-[#58a6ff]">Terms & Conditions</Link>
           </ul>

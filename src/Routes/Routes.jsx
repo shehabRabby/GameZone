@@ -8,6 +8,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import MyProfile from "../Pages/MyProfile";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import AboutUs from "../Pages/AboutUs";
+import UpdateInfo from "../Pages/UpdateInfo";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path: "/aboutus",
         element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "/update-info",
+        element: <UpdateInfo />,
       },
       {
         path: "/gameDetails",
