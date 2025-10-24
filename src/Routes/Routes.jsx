@@ -7,6 +7,7 @@ import GameDetails from "../Pages/GameDetails";
 import ErrorPage from "../Pages/ErrorPage";
 import MyProfile from "../Pages/MyProfile";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import AboutUs from "../Pages/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: <RegistrationPage></RegistrationPage>,
+      },
+      {
+        path: "/aboutus",
+        element: <AboutUs></AboutUs>,
       },
       {
         path: "/gameDetails",

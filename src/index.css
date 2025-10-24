@@ -14,3 +14,67 @@
 .swiper-button-prev:hover {
   color: #58a6ff !important;
 }
+
+/* 🌌 Background Animation */
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-bgMove {
+  animation: bgMove 15s ease-in-out infinite;
+  background-size: 200% 200%;
+}
+
+/* Fade-in card animation */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Hover glow effect */
+.glow-hover:hover {
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Floating glow orb */
+@keyframes floatGlow {
+  0% { opacity: 0.6; transform: translateY(0px); }
+  50% { opacity: 1; transform: translateY(-10px); }
+  100% { opacity: 0.6; transform: translateY(0px); }
+}
+
+.bg-floating-glow {
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(99,102,241,0.3), transparent 70%);
+  border-radius: 50%;
+  filter: blur(50px);
+  animation: floatGlow 6s ease-in-out infinite;
+}
+
+
+
+
+/* abou us */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease forwards;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
+}

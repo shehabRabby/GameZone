@@ -10,6 +10,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
+    { name: "About Us", path: "/aboutus" },
     { name: "Game Details", path: "/gameDetails" },
   ];
 

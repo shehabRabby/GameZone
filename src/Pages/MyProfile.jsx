@@ -21,6 +21,12 @@ const MyProfile = () => {
 
   return (
     <div className="min-h-screen bg-[#0d1117] text-white flex flex-col justify-center items-center p-6">
+      <div className="w-full flex justify-center m-6">
+       <h1 className="text-white text-center text-3xl md:text-4xl font-bold animate-bounce">
+          Welcome to your profile
+       </h1>
+      </div>
+
       <div className="bg-[#161b22] rounded-2xl shadow-xl p-8 w-full max-w-md text-center">
         <img
           src={user?.photoURL || "https://via.placeholder.com/120"}
