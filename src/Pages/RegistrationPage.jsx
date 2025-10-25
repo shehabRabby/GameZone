@@ -34,16 +34,17 @@ const RegistrationPage = () => {
 
 const handleSignup = (e) => {
   e.preventDefault();
-
+  setLoading(true)
   const displayName = e.target.name.value;
   const photoURL = e.target.photo.value;
   const email = e.target.email.value;
   const password = e.target.password.value;
   // console.log("Signup function enter :", displayName, photoURL, email, password);
   //password validation use regex
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
     if(!passwordRegex.test(password)){
-      toast.error("Password must be at least 6 characters long and include uppercase, lowercase, number, and special character.");
+      toast.error("Password must be at least 6 characters long and include uppercase & lowercase");
+      setLoading(false)
       return;
     }
 
@@ -104,7 +105,11 @@ const handleSignup = (e) => {
       } else {
         toast.error(`${e.message || "Something went wrong. Please try again."}`);
       }
-    });
+    })
+    .finally(()=>{
+      setLoading(false);
+    })
+    
 };
 
 

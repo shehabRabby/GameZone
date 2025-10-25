@@ -31,6 +31,7 @@ const handleSignin = (e) => {
   const password = e.target.password.value;
   // console.log(email, password);
 
+  setLoading(true);
   signInWithEmailAndPasswordFunc(email, password)
     .then((res) => {
       setLoading(false);
@@ -70,15 +71,19 @@ const handleSignin = (e) => {
       } else {
         toast.error(`${e.message || "Something went wrong. Please try again."}`);
       }
-    });
+    })
+    .finally(() => {
+    setLoading(false);
+  });
+    
 };
 
 // google signin 
 const handleGoogleSignin =()=>{
+  setLoading(true)
   signInWithEmailPopupFunc(googleProvider)
   .then((res)=>{
         // console.log(res);
-        setLoading(false)
         setUser(res.user)
         navigate(from, { replace: true });
         toast.success("Login Succesfully Done");
@@ -87,19 +92,25 @@ const handleGoogleSignin =()=>{
         // console.log(e);
         toast.error(e.message);
   })
+  .finally(() => {
+    setLoading(false);
+  });
 }
 
 //forget password 
 const handleForgetPassword=()=>{
+  setLoading(true)
   const email = emailRef.current.value;
   sendPasswordResetEmailFunc(email)
   .then(()=>{
-    setLoading(false)
     toast.success("Check your email to reset password")
   })
   .catch(e=>{
     toast.error(e.message)
   })
+  .finally(() => {
+    setLoading(false);
+  });
 
 }
 
