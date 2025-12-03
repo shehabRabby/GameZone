@@ -5,6 +5,24 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
+// NOTE: You must include a custom CSS file (e.g., index.css) 
+// for the .swiper-button classes below to work, as they override Swiper's default styling.
+/*
+// Example CSS additions for the navigation arrows:
+.swiper-button-next,
+.swiper-button-prev {
+  color: #06b6d4 !important; // Tailwind 'cyan-500'
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+*/
+
 export default function Slider() {
   const slides = [
     {
@@ -63,24 +81,46 @@ export default function Slider() {
     },
   ];
 
-
   return (
-    <div className="w-fullmx-auto">
+    // Updated container to constrain width and center the slider
+    <div className="w-full max-w-7xl mx-auto rounded-xl shadow-2xl overflow-hidden mt-6"> 
       <Swiper
-        spaceBetween={30}
+        spaceBetween={0} // Space between slides often looks better at 0 for full-width carousels
         centeredSlides={true}
-        autoplay={{delay: 1500,disableOnInteraction: false,}}
-        pagination={{clickable: true,}}
+        // Increased delay slightly for better reading time
+        autoplay={{ delay: 3500, disableOnInteraction: false }} 
+        pagination={{ clickable: true }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper  overflow-hidden">
+        // Added rounded corners to the main Swiper container
+        className="mySwiper w-full h-full rounded-xl" 
+      >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <div className="relative w-full h-[50vh] lg:h-[77vh] flex items-center justify-center text-center text-white" style={{ backgroundImage: `url(${slide.img})`, backgroundSize: "cover", backgroundPosition: "center"}}>
-              <div className="absolute inset-0 bg-black/50"></div>
-              <div className="relative z-10 px-6 md:px-10">
-                <h2 className="text-3xl md:text-5xl font-extrabold mb-3 drop-shadow-lg">{slide.title}</h2>
-                <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">{slide.desc}</p>
+            <div
+              className="relative w-full h-[55vh] md:h-[65vh] lg:h-[77vh] flex items-center justify-center text-center text-white transition-all duration-500"
+              style={{
+                backgroundImage: `url(${slide.img})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                // Added a transition property for a subtle hover effect if needed, though not strictly required here
+              }}
+              aria-label={slide.title}
+            >
+              {/* Refined Overlay: Dark gradient for better text contrast */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+              
+              <div className="relative z-10 px-6 md:px-10 py-10">
+                <h2 className="text-4xl md:text-6xl font-black mb-4 drop-shadow-xl tracking-wide">
+                  {slide.title}
+                </h2>
+                <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto font-medium">
+                  {slide.desc}
+                </p>
+                {/* Optional: Add a call-to-action button */}
+                <button className="mt-8 px-6 py-3 bg-cyan-500 text-white font-bold rounded-full hover:bg-cyan-600 transition-colors shadow-lg transform hover:scale-[1.03]">
+                    Explore Now
+                </button>
               </div>
             </div>
           </SwiperSlide>

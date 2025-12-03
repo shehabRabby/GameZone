@@ -9,6 +9,7 @@ import MyProfile from "../Pages/MyProfile";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import AboutUs from "../Pages/AboutUs";
 import UpdateInfo from "../Pages/UpdateInfo";
+import GameStats from "../Pages/GameStats";
 
 export const router = createBrowserRouter([
   {
@@ -33,16 +34,16 @@ export const router = createBrowserRouter([
         element: <AboutUs></AboutUs>,
       },
       {
+        path: "/game-stats",
+        element: <GameStats></GameStats>,
+      },
+      {
         path: "/update-info",
         element: <UpdateInfo />,
       },
       {
         path: "/gameDetails",
-        element: (
-          <PrivateRoute>
-            <GameDetails />
-          </PrivateRoute>
-        ),
+        element: <GameDetails />,
       },
       {
         path: "/myprofile",

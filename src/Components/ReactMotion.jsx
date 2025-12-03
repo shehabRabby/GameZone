@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState, useCallback } from "react";
 import {
   useSpringRef,
   animated,
@@ -16,50 +16,112 @@ const IMAGES = [
   "https://i.pinimg.com/736x/d0/32/9b/d0329bf6417830d8ddec9950ec70b02d.jpg",
 ];
 
+
+const SVG_PATH =
+  "M19.9999 38.5001C17.5704 38.5001 15.1648 38.0216 12.9203 37.0919C10.6758 36.1622 8.63633 34.7995 6.91845 33.0816C5.20058 31.3638 3.83788 29.3243 2.90817 27.0798C1.97846 24.8353 1.49995 22.4296 1.49995 20.0002C1.49995 17.5707 1.97846 15.1651 2.90817 12.9206C3.83788 10.6761 5.20058 8.63663 6.91846 6.91875C8.63634 5.20087 10.6758 3.83818 12.9203 2.90847C15.1648 1.97876 17.5705 1.50024 19.9999 1.50024C22.4293 1.50024 24.835 1.97876 27.0795 2.90847C29.324 3.83818 31.3635 5.20088 33.0813 6.91876C34.7992 8.63663 36.1619 10.6761 37.0916 12.9206C38.0213 15.1651 38.4998 17.5707 38.4998 20.0002C38.4998 22.4296 38.0213 24.8353 37.0916 27.0798C36.1619 29.3243 34.7992 31.3638 33.0813 33.0816C31.3635 34.7995 29.324 36.1622 27.0795 37.0919C24.835 38.0216 22.4293 38.5001 19.9999 38.5001Z";
+
+const TRANSITION_DURATION = 3000;
+const TRANSITION_DELAY = 1000;
+const TOTAL_SLIDE_TIME = TRANSITION_DURATION + TRANSITION_DELAY;
+const PROGRESS_BAR_LENGTH = 120; 
+
 const ReactMotion = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const springApi = useSpringRef();
 
+  const getNextIndex = useCallback(() => {
+    return activeIndex === IMAGES.length - 1 ? 0 : activeIndex + 1;
+  }, [activeIndex]);
+
+  // Handler for manual slide change (UX improvement)
+  const nextSlide = useCallback(() => {
+    springApi.stop();
+    setActiveIndex(getNextIndex());
+  }, [getNextIndex, springApi]);
+
+  // 1. Transition for the main image slide effect
   const transitions = useTransition(activeIndex, {
+    key: activeIndex, // Explicitly use activeIndex as the key
     from: { clipPath: "polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%)" },
     enter: { clipPath: "polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%)" },
     leave: { clipPath: "polygon(100% 0%, 100% 100%, 100% 100%, 100% 0%)" },
-    onRest: (_springs, _ctrl, item) => {
-      if (activeIndex === item) {setActiveIndex(activeIndex === IMAGES.length - 1 ? 0 : activeIndex + 1);}
+    onRest: (result, ctrl, item) => {
+      if (activeIndex === item && result.finished) {
+        setTimeout(() => {
+          setActiveIndex(getNextIndex());
+        }, TRANSITION_DELAY);
+      }
     },
     exitBeforeEnter: true,
-    config: { duration: 3000 },
-    delay: 1000,
+    config: { duration: TRANSITION_DURATION },
+
     ref: springApi,
   });
 
   const springs = useSpring({
-    from: { strokeDashoffset: 120 },
+    from: { strokeDashoffset: PROGRESS_BAR_LENGTH },
     to: { strokeDashoffset: 0 },
-    config: { duration: 11000 },
-    loop: true,
+    config: { duration: TOTAL_SLIDE_TIME }, 
     ref: springApi,
   });
 
+
   useLayoutEffect(() => {
     springApi.start();
-  }, [activeIndex]);
+  }, [activeIndex, springApi]);
 
   return (
     <div className="relative w-full min-h-screen flex flex-col justify-center items-center overflow-hidden px-4 sm:px-6 lg:px-8 bg-white">
       {/* Image Container */}
-      <div className="relative w-full max-w-5xl h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] overflow-hidden rounded-2xl shadow-2xl">
+      <div 
+        className="relative w-full max-w-7xl h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] overflow-hidden rounded-2xl shadow-2xl cursor-pointer"
+        onClick={nextSlide}
+      >
         {transitions((styles, item) => (
-          <animated.div className="absolute inset-0 w-full h-full" style={styles}>
-            <img src={IMAGES[item]} alt={`Slide ${item}`} className="w-full h-full object-cover"/>
+          <animated.div 
+            className="absolute inset-0 w-full h-full" 
+            style={styles}
+          >
+            <img 
+              src={IMAGES[item]} 
+              alt={`Slide ${item}`} 
+              className="w-full h-full object-cover"
+            />
           </animated.div>
         ))}
 
-        {/* Animated border ticker */}
+       
         <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 flex items-center justify-center">
-          <animated.svg width="24" height="24" viewBox="0 0 60 60" style={springs} className="stroke-[#58a6ff] fill-none stroke-[3px] sm:stroke-[4px]">
-            <path d="M19.9999 38.5001C17.5704 38.5001 15.1648 38.0216 12.9203 37.0919C10.6758 36.1622 8.63633 34.7995 6.91845 33.0816C5.20058 31.3638 3.83788 29.3243 2.90817 27.0798C1.97846 24.8353 1.49995 22.4296 1.49995 20.0002C1.49995 17.5707 1.97846 15.1651 2.90817 12.9206C3.83788 10.6761 5.20058 8.63663 6.91846 6.91875C8.63634 5.20087 10.6758 3.83818 12.9203 2.90847C15.1648 1.97876 17.5705 1.50024 19.9999 1.50024C22.4293 1.50024 24.835 1.97876 27.0795 2.90847C29.324 3.83818 31.3635 5.20088 33.0813 6.91876C34.7992 8.63663 36.1619 10.6761 37.0916 12.9206C38.0213 15.1651 38.4998 17.5707 38.4998 20.0002C38.4998 22.4296 38.0213 24.8353 37.0916 27.0798C36.1619 29.3243 34.7992 31.3638 33.0813 33.0816C31.3635 34.7995 29.324 36.1622 27.0795 37.0919C24.835 38.0216 22.4293 38.5001 19.9999 38.5001Z" />
-          </animated.svg>
+          <svg 
+            width="24" 
+            height="24" 
+            viewBox="0 0 40 40" 
+            className="stroke-[#58a6ff] fill-none stroke-[3px] sm:stroke-[4px]"
+          >
+             <path d={SVG_PATH} strokeDasharray={PROGRESS_BAR_LENGTH} />
+            <animated.path 
+              d={SVG_PATH} 
+              strokeDasharray={PROGRESS_BAR_LENGTH} 
+              style={springs} // Apply the progress animation
+              className="stroke-[#58a6ff] fill-none stroke-[3px] sm:stroke-[4px]"
+            />
+          </svg>
+        </div>
+        {/* Navigation Indicator Dots (UX Improvement) */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+            {IMAGES.map((_, index) => (
+                <div
+                    key={index}
+                    className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+                        index === activeIndex ? "bg-[#58a6ff]" : "bg-white/50 hover:bg-white/80"
+                    }`}
+                    onClick={(e) => {
+                        e.stopPropagation(); 
+                        springApi.stop();
+                        setActiveIndex(index);
+                    }}
+                />
+            ))}
         </div>
       </div>
 
