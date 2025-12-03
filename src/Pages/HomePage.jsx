@@ -7,7 +7,7 @@ const HomePage = () => {
   const allData = useLoaderData();
   return (
     <div className="min-h-[332px]">
-      <ShowSlider></ShowSlider>
+      {/* <ShowSlider></ShowSlider> */}
       <GameContainer allData ={allData}></GameContainer>
       <NewsLetter></NewsLetter>
     </div>
