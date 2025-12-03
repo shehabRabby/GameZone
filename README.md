@@ -1,5 +1,5 @@
         🎮 GameZone
-           Live Link: https://gamezone22.netlify.app/
+           Live Link: https://gamezone22.netlify.app/  
            Repo Link: https://github.com/shehabRabby/game_hub
         
         📖 Description:
@@ -41,5 +41,5 @@
             2.Newsletter: Styled using TailwindCSS
 
         👤 Developed By:
-           👤 Md Shehab Al Rabby
+           👤 Md Shehab Al Rabby 
            📧 shehabrabby764@gmail.com

@@ -28,7 +28,7 @@ const ExclusiveOfferBanner = () => {
           <div className="relative z-10 bg-gray-800 rounded-[calc(1.5rem-4px)] p-6 md:p-10 flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="text-center lg:text-left">
               <span className="inline-flex items-center rounded-full bg-red-600/20 px-4 py-1 text-sm font-bold text-red-400 uppercase tracking-widest mb-4 border border-red-500/50">
-                <FaBolt className="mr-2 text-red-500 animate-pulse" /> LIMITED
+                <FaBolt className="mr-2 text-red-600 animate-pulse" /> LIMITED
                 TIME
               </span>
 
