@@ -4,7 +4,8 @@
 
         ## 📖 Description
 
-            GameZone is an **interactive gaming platform** where users can explore, discover, and get detailed info about a variety of games. The app provides a smooth, modern, and responsive experience with features like game sliders, newsletters, and animations to keep users engaged.
+            GameZone is an **interactive gaming platform** where users can explore, discover, and get detailed info about a variety of games.
+            The app provides a smooth, modern, and responsive experience with features like game sliders, newsletters, and animations to keep users engaged.
             
          ## ✨ Key Features
 
@@ -50,8 +51,7 @@
             ### Quick Setup
             
             ```bash
-            git clone [https://github.com/shehabRabby/game_hub.git](https://github.com/shehabRabby/game_hub.git)
-            cd game_hub
+            git clone (https://github.com/shehabRabby/GameZone.git)
             npm install
             # Note: Ensure your Firebase environment variables are configured in a .env file.
             npm run dev
