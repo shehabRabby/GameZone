@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
-import { PuffLoader } from "react-spinners"; 
+import { PuffLoader } from "react-spinners";
 import { FaGamepad } from "react-icons/fa";
 
 const Navbar = () => {
@@ -17,39 +17,52 @@ const Navbar = () => {
   ];
 
   return (
- <nav className="fixed top-0 left-0 w-full z-50 bg-gray-900 shadow-xl border-b-2 border-cyan-500/50">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-gray-900 shadow-xl border-b-2 border-cyan-500/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:py-4 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-black tracking-wider flex items-center gap-2 transition-transform duration-300 hover:scale-[1.03]">
+        <Link
+          to="/"
+          className="text-2xl font-black tracking-wider flex items-center gap-2 transition-transform duration-300 hover:scale-[1.03]"
+        >
           <span className="h-9 w-9 flex items-center justify-center rounded-full bg-cyan-500 text-gray-900 shadow-lg">
             <FaGamepad size={20} />
-          </span> 
+          </span>
           <span className="text-white hover:text-cyan-400 transition-colors duration-300">
             <span className="text-cyan-500">Game</span>Zone
           </span>
         </Link>
-        
+
         {/* DESKTOP NAVIGATION LINKS */}
         <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
-            <NavLink key={link.path} to={link.path}
+            <NavLink
+              key={link.path}
+              to={link.path}
               className={({ isActive }) =>
                 `text-base font-medium relative transition-all duration-300 group ${
-                  isActive ? "text-cyan-400" : "text-gray-300 hover:text-cyan-300"
+                  isActive
+                    ? "text-cyan-400"
+                    : "text-gray-300 hover:text-cyan-300"
                 }`
               }
             >
               {link.name}
               {/* Animated underline indicator */}
-              <span className={`absolute bottom-[-6px] left-0 w-full h-[2px] bg-cyan-400 transform transition-transform duration-300 ${
-                  ({ isActive }) => isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-75"
-              }`}></span>
+              <span
+                className={`absolute bottom-[-6px] left-0 w-full h-[2px] transform transition-transform duration-300 ${({
+                  isActive,
+                }) =>
+                  isActive
+                    ? "scale-x-100"
+                    : "scale-x-0 group-hover:scale-x-75"}`}
+              ></span>
             </NavLink>
           ))}
 
           {/* User Status/Auth Links */}
           {loading ? (
             <div className="flex justify-center items-center">
-              <PuffLoader color="#06b6d4" size={36} /> {/* Updated color to cyan */}
+              <PuffLoader color="#06b6d4" size={36} />{" "}
+              {/* Updated color to cyan */}
             </div>
           ) : user ? (
             <Link to="/myprofile" className="relative group">
@@ -81,7 +94,10 @@ const Navbar = () => {
         </div>
 
         {/* MOBILE MENU BUTTON */}
-        <button className="md:hidden text-gray-300 hover:text-cyan-400 transition" onClick={() => setOpen(!open)}>
+        <button
+          className="md:hidden text-gray-300 hover:text-cyan-400 transition"
+          onClick={() => setOpen(!open)}
+        >
           {open ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
@@ -90,10 +106,15 @@ const Navbar = () => {
       {open && (
         <div className="md:hidden bg-gray-800 border-t border-gray-700 text-gray-200 flex flex-col items-center gap-6 py-6 animate-fadeIn">
           {navLinks.map((link) => (
-            <NavLink key={link.path} to={link.path} onClick={() => setOpen(false)}
+            <NavLink
+              key={link.path}
+              to={link.path}
+              onClick={() => setOpen(false)}
               className={({ isActive }) =>
                 `block text-lg font-medium transition-colors duration-300 ${
-                  isActive ? "text-cyan-400 border-b border-cyan-400" : "text-gray-300 hover:text-cyan-300"
+                  isActive
+                    ? "text-cyan-400 border-b border-cyan-400"
+                    : "text-gray-300 hover:text-cyan-300"
                 }`
               }
             >
@@ -114,8 +135,20 @@ const Navbar = () => {
             </Link>
           ) : (
             <div className="flex flex-col gap-3 pt-2 w-full px-8">
-              <NavLink to="/signin" onClick={() => setOpen(false)} className="text-center w-full py-2 text-base font-bold rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md">Login</NavLink>
-              <NavLink to="/signup" onClick={() => setOpen(false)} className="text-center w-full py-2 text-base font-medium rounded-lg border border-gray-600 text-gray-300 hover:border-cyan-500 hover:text-cyan-400">Registration</NavLink>
+              <NavLink
+                to="/signin"
+                onClick={() => setOpen(false)}
+                className="text-center w-full py-2 text-base font-bold rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md"
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/signup"
+                onClick={() => setOpen(false)}
+                className="text-center w-full py-2 text-base font-medium rounded-lg border border-gray-600 text-gray-300 hover:border-cyan-500 hover:text-cyan-400"
+              >
+                Registration
+              </NavLink>
             </div>
           )}
         </div>
