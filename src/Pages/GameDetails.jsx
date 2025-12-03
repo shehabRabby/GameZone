@@ -158,7 +158,6 @@ const GameDetails = () => {
             </div>
           </div>
 
-          {/* Right Column: Trailer (Takes the remaining two columns) */}
           <div className="lg:col-span-2 space-y-8">
             {/* Trailer Section */}
             <div className="p-6 bg-gray-800 rounded-xl shadow-xl border border-cyan-500/20">
@@ -166,7 +165,7 @@ const GameDetails = () => {
                 <FaVideo size={24} /> <span>Game Trailer</span>
               </h3>
               <div className="relative aspect-video bg-black rounded-lg overflow-hidden border border-gray-700">
-                <p className="text-gray-400 text-center py-10">
+                <p className="text-gray-400 text-center py-8">
                   Embedded Trailer Player Goes Here (or iframe with src=
                   {game.videoTrailer})
                   <br />
@@ -184,7 +183,6 @@ const GameDetails = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };

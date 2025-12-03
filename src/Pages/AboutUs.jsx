@@ -34,7 +34,7 @@ const AboutUs = () => {
           {/* CTA Button */}
           <a 
             href="/" 
-            className="px-10 py-4 bg-indigo-600 text-white font-bold text-lg rounded-full shadow-2xl hover:bg-indigo-700 transition duration-300 transform hover:scale-105 ring-4 ring-indigo-300 ring-opacity-50 uppercase tracking-wider cursor-pointer"
+            className="px-8 py-2 bg-indigo-600 text-white font-bold text-lg rounded-full shadow-2xl hover:bg-indigo-700 transition duration-300 transform hover:scale-105 ring-4 ring-indigo-300 ring-opacity-50 uppercase tracking-wider cursor-pointer"
           >
             Explore Trending Games
           </a>

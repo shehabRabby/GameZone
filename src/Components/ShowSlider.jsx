@@ -98,7 +98,7 @@ export default function Slider() {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div
-              className="relative w-full h-[55vh] md:h-[65vh] lg:h-[77vh] flex items-center justify-center text-center text-white transition-all duration-500"
+              className="relative w-full h-[55vh] md:h-[60vh] lg:h-[70vh] flex items-center justify-center text-center text-white transition-all duration-500"
               style={{
                 backgroundImage: `url(${slide.img})`,
                 backgroundSize: "cover",

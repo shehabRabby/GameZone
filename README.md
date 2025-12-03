@@ -1,6 +1,6 @@
         🎮 GameZone
-           Live Link: https://game-zone00.netlify.app/
-           Repo Link: https://github.com/programming-hero-web-course2/b12-a9-firesheild-shehabRabby (Protected)
+           Live Link: https://gamezone22.netlify.app/
+           Repo Link: https://github.com/shehabRabby/game_hub
         
         📖 Description:
            GameZone is an interactive gaming platform where users can explore, discover, and get detailed info
