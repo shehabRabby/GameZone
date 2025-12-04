@@ -1,6 +1,6 @@
         🎮 GameZone
-           Live Link: https://gamezone22.netlify.app/
-           Repo Link: https://github.com/shehabRabby/GameZone
+           Live Link: [https://gamezone22.netlify.app/]
+           Repo Link: [https://github.com/shehabRabby/GameZone]
 
         ## 📖 Description
 
